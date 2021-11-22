@@ -9,7 +9,7 @@
         "pyrogram"
     ],
     "website": "https://t.me/levinachannel",
-    "repository": "https://github.com/levina-lab/video-stream",
+    "repository": "https://github.com/Shailendra34/Videostream",
     "success_url": "https://t.me/dlwrml",
     "env": {
         "API_ID": {
@@ -62,7 +62,7 @@
         "ALIVE_NAME": {
             "description": "fill with your telegram account nickname/name",
             "required": true,
-            "value": "Levina"
+            "value": "Shailendra"
         }
     },
     "addons": [],
