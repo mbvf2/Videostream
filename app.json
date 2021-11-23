@@ -27,7 +27,7 @@
         "BOT_USERNAME": {
             "description": "your bot username from @BotFather",
             "required": true
-            "value": "heromusics_bot
+            "value": "heromusics_bot"
         },
         "BOT_NAME": {
             "description": "fill with your bot name from @BotFather",
