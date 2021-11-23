@@ -63,27 +63,22 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me to your Group ➕",
+                        "➕ Add me ➕,
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("💞 ʜᴇʟᴘ 💞", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
-                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton(😎 ᴄᴏᴍᴍᴀɴᴅs 🤟", callback_data="cbcmds"),
+                    InlineKeyboardButton("⚜️ ᴏᴡɴᴇʀ ⚜️", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "Group", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "💝 Support 💝", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "💠 Channel 💠", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
-                ],
-                [
-                    InlineKeyboardButton(
-                        "Source Code", url="https://github.com/levina-lab/video-stream"
-                    )
                 ],
             ]
         ),
