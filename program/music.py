@@ -79,9 +79,6 @@ async def play(c: Client, m: Message):
             "missing required permission:" + "\n\n» ❌ __Delete messages__"
         )
         return
-    if not a.can_invite_users:
-        await m.reply_text("missing required permission:" + "\n\n» ❌ __Add users__")
-        return
     try:
         ubot = await user.get_me()
         b = await c.get_chat_member(chat_id, ubot.id)
