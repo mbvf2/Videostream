@@ -50,7 +50,7 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["mplay", f"mplay@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
 async def play(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
@@ -74,11 +74,6 @@ async def play(c: Client, m: Message):
             f"💡 To use me, I need to be an **Administrator** with the following **permissions**:\n\n» ❌ __Delete messages__\n» ❌ __Restrict users__\n» ❌ __Add users__\n» ❌ __Manage video chat__\n\nData is **updated** automatically after you **promote me**"
         )
         return
-    if not a.can_manage_voice_chats:
-        await m.reply_text(
-            "missing required permission:" + "\n\n» ❌ __Manage video chat__"
-        )
-        return
     if not a.can_delete_messages:
         await m.reply_text(
             "missing required permission:" + "\n\n» ❌ __Delete messages__"
@@ -86,9 +81,6 @@ async def play(c: Client, m: Message):
         return
     if not a.can_invite_users:
         await m.reply_text("missing required permission:" + "\n\n» ❌ __Add users__")
-        return
-    if not a.can_restrict_members:
-        await m.reply_text("missing required permission:" + "\n\n» ❌ __Restrict users__")
         return
     try:
         ubot = await user.get_me()
