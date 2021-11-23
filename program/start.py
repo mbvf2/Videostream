@@ -63,7 +63,7 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ Add me ➕,
+                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕,
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
@@ -74,10 +74,10 @@ async def start_(client: Client, message: Message):
                 ],
                 [
                     InlineKeyboardButton(
-                        "💝 Support 💝", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "💝 sᴜᴘᴘᴏʀᴛ 💝", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "💠 Channel 💠", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "💠 ᴄʜᴀɴɴᴇʟ 💠", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
             ]
