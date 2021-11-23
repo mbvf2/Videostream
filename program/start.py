@@ -48,7 +48,7 @@ async def _human_time_duration(seconds):
 
 
 @Client.on_message(
-    command(["start", f"start@{BOT_USERNAME}"]) & filters.group & ~filters.edited
+    command(["start", f"start@{BOT_USERNAME}"]) & filters.private & ~filters.edited
 )
 async def start_(client: Client, message: Message):
     await message.reply_text(
@@ -63,22 +63,27 @@ async def start_(client: Client, message: Message):
             [
                 [
                     InlineKeyboardButton(
-                        "➕ ᴀᴅᴅ ᴍᴇ ᴛᴏ ʏᴏᴜʀ ɢʀᴏᴜᴘ ➕,
+                        "➕ Add me to your Group ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
-                [InlineKeyboardButton("💞 ʜᴇʟᴘ 💞", callback_data="cbhowtouse")],
+                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
                 [
-                    InlineKeyboardButton(😎 ᴄᴏᴍᴍᴀɴᴅs 🤟", callback_data="cbcmds"),
-                    InlineKeyboardButton("⚜️ ᴏᴡɴᴇʀ ⚜️", url=f"https://t.me/{OWNER_NAME}"),
+                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
+                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "💝 sᴜᴘᴘᴏʀᴛ 💝", url=f"https://t.me/{GROUP_SUPPORT}"
+                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "💠 ᴄʜᴀɴɴᴇʟ 💠", url=f"https://t.me/{UPDATES_CHANNEL}"
+                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
+                ],
+                [
+                    InlineKeyboardButton(
+                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
+                    )
                 ],
             ]
         ),
