@@ -27,14 +27,17 @@
         "BOT_USERNAME": {
             "description": "your bot username from @BotFather",
             "required": true
+            "value": "heromusics_bot
         },
         "BOT_NAME": {
             "description": "fill with your bot name from @BotFather",
             "required": true
+            "value": "Hero Musics Bot
         },
         "ASSISTANT_NAME": {
             "description": "fill with the assistant username account without @",
             "required": true
+            "value": "mai_hu_hero"
         },
         "SESSION_NAME": {
             "description": "fill with the pyrogram String Session",
@@ -43,21 +46,22 @@
         "SUDO_USERS": {
             "description": "list of user ids to be added to sudo member list, or just fill with your id",
             "required": true
+            "value": "1323020756"
         },
         "GROUP_SUPPORT": {
             "description": "if you have group, then fill the group username here without @",
             "required": true,
-            "value": "VeezSupportGroup"
+            "value": "Yaaro_ki_yaarii"
         },
         "UPDATES_CHANNEL": {
             "description": "if you have channel, then fill the channel username here without @",
             "required": true,
-            "value": "levinachannel"
+            "value": "Modmenumaking"
         },
         "OWNER_NAME": {
             "description": "fill with your telegram account username without @",
             "required": true,
-            "value": "dlwrml"
+            "value": "Shailendra34"
         },
         "ALIVE_NAME": {
             "description": "fill with your telegram account nickname/name",
