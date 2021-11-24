@@ -1,4 +1,4 @@
-# Copyright (C) 2021 By Veez Music-Project
+#fCopyright (C) 2021 By Veez Music-Project
 # Commit Start Date 20/10/2021
 # Finished On 28/10/2021
 
@@ -50,14 +50,14 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}"]) & other_filters)
-async def play(c: Client, m: Message):
+@Client.on_message(command(["play", "تشغيل"]) & other_filters)
+async def play(_, message: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
+                InlineKeyboardButton(text="• تحكم", callback_data="cbmenu"),
                 InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="cls"),
             ]
         ]
