@@ -188,8 +188,12 @@ async def play(_, message: Message):
 # Have u read all. If read RESPECT :-)
 
 
-@Client.on_message(command("تشغيل") & other_filters)
-async def stream(c: Client, m: Message):
+@Client.on_message(command("play") 
+                   & filters.group
+                   & ~filters.edited 
+                   & ~filters.forwarded
+                   & ~filters.via_bot) 
+async def play(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
