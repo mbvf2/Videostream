@@ -45,6 +45,7 @@ async def cbstart(_, query: CallbackQuery):
                 [
                    InlineKeyboardButton(
                         "**قـــنـــاة الـسـورس**", url="t.me/mabx_2")
+                    )
                 ],
             ]
         ),
