@@ -52,41 +52,43 @@ async def _human_time_duration(seconds):
 )
 async def start_(client: Client, message: Message):
     await message.reply_text(
-        f""""💭 مرحبآ [{query.message.chat.first_name}](tg://user?id={query.message.chat.id}) !**\n
-💭 **انــا بــوت اسمي[{BOT_NAME}](https://t.me/{BOT_USERNAME}) تــخـصـوصـي هـو تـــشغيل الاغـــاني و الـــفــيـدوهـــات فــي الـمـحـدثـات الــصوتـيـه**
+        f"""✨ **Welcome {message.from_user.mention()} !**\n
+💭 [{BOT_NAME}](https://t.me/{BOT_USERNAME}) **Allows you to play music and video on groups through the new Telegram's video chats!**
 
-💡 ** BY » DEVELOPER MAB ♬""")
+💡 **Find out all the Bot's commands and how they work by clicking on the » 📚 Commands button!**
 
-  reply_markup=InlineKeyboardMarkup(
-     
+🔖 **To know how to use this bot, please click on the » ❓ Basic Guide button!**
+""",
+        reply_markup=InlineKeyboardMarkup(
+            [
                 [
                     InlineKeyboardButton(
-                        "➕ ** اضـف الـبـوت لي مـجـمـوعـتـك **➕",
+                        "➕ Add me to your Group ➕",
                         url=f"https://t.me/{BOT_USERNAME}?startgroup=true",
                     )
                 ],
+                [InlineKeyboardButton("❓ Basic Guide", callback_data="cbhowtouse")],
                 [
-                InlineKeyboardButton("الاوامـــــــر♬", callback_data="cbbasic"),
-                InlineKeyboardButton("  الاوامــــــــــر ♬", callback_data="cbcmds")
+                    InlineKeyboardButton("📚 Commands", callback_data="cbcmds"),
+                    InlineKeyboardButton("❤️ Donate", url=f"https://t.me/{OWNER_NAME}"),
                 ],
                 [
                     InlineKeyboardButton(
-                        "👥 «⫷ 𝗗 𝗔 𝗩  𝗠 𝗔 𝗕 ⫸»",url="t.me/xO_mab_Ox"
+                        "👥 Official Group", url=f"https://t.me/{GROUP_SUPPORT}"
                     ),
                     InlineKeyboardButton(
-                        "👥 «⫷ 𝐺𝑎𝑚𝑏𝑜𝑙↝♡⫸»",url="t.me/G8_M_L"
+                        "📣 Official Channel", url=f"https://t.me/{UPDATES_CHANNEL}"
                     ),
                 ],
                 [
-                   InlineKeyboardButton(
-                        "**قـــنـــاة الـسـورس**", url="t.me/mabx_2")
+                    InlineKeyboardButton(
+                        "🌐 Source Code", url="https://github.com/levina-lab/video-stream"
+                    )
                 ],
             ]
         ),
         disable_web_page_preview=True,
     )
-
- 
 
 
 @Client.on_message(
