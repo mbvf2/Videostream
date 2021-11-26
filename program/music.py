@@ -148,8 +148,7 @@ async def play(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "» **قـــــم بـي الــرد عـلي مـلـف مـوسـيـقي ♬..
-او قــــم بـي كـتـابـة اســم الاغـنـيـه للـبـحـث عـنـهـا ♬..****"
+                    "» reply to an **audio file** or **give something to search.**"
                 )
             else:
                 suhu = await c.send_message(chat_id, "🔎 **جـــاريي الـبـحـث ♬.. **")
@@ -200,9 +199,8 @@ async def play(c: Client, m: Message):
     else:
         if len(m.command) < 2:
             await m.reply(
-                "» **قـــــم بـي الــرد عـلي مـلـف مـوسـيـقي♬..
-او قـم بـي كـتـابـة اســم الاغـنـيـه للـبـحـث عـنـهـا ♬..**" 
-            )
+                    "» reply to an **audio file** or **give something to search.**"
+                )
         else:
             suhu = await c.send_message(chat_id, "🔎 **جـــاريي الـبـحـث ♬.. **")
             query = m.text.split(None, 1)[1]
