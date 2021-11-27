@@ -1,4 +1,4 @@
-# Copyright (C) 2021 By VeezMusicProject
+ Copyright (C) 2021 By VeezMusicProject
 
 from driver.queues import QUEUE
 from pyrogram import Client, filters
@@ -201,3 +201,32 @@ async def close(_, query: CallbackQuery):
     if not a.can_manage_voice_chats:
         return await query.answer("💡 only admin with manage voice chats permission that can tap this button !", show_alert=True)
     await query.message.delete()
+
+
+
+@Client.on_callback_query(filters.regex("mabx"))
+async def cbmenu(_, query: CallbackQuery):
+    if query.message.sender_chat:
+        return await query.answer("you're an Anonymous Admin !\n\n» revert back to user account from admin rights.")
+    a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
+    if not a.can_manage_voice_chats:
+        return await query.answer("💡 بطل لعب ي ابو شخه 😂💗.. ", show_alert=True)
+    chat_id = query.message.chat.id
+    if chat_id in QUEUE:
+          await query.edit_message_text(
+              f"انت الان داخل قائمة سمعني ♥\n\nاختر ما تريد سماعه من الازرار بي الاسفل ♥.. ",
+              reply_markup=InlineKeyboardMarkup(
+                  [[
+                      InlineKeyboardButton("مـــسـلم", callback_data="cbstop"),
+                      InlineKeyboardButton("ويـجـز", callback_data="cbpause"),
+                      InlineKeyboardButton("عمار", callback_data="cbresume"),
+                  ],[
+                      InlineKeyboardButton("احمد كامل", callback_data="cbmute"),
+                      InlineKeyboardButton("شاهين", callback_data="cbunmute"),
+                  ],[
+                      InlineKeyboardButton("🗑 Close", callback_data="cls")],
+                  ]
+             ),
+         )
+    else:
+        await query.answer("❌ nothing is currently streaming", show_alert=True)

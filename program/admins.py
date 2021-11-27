@@ -38,7 +38,7 @@ async def update_admin(client, message):
     )
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip","/skip","تخطي"]) & other_filters)
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
 
@@ -89,7 +89,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message(
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop","توقف","ايقاف"])
+    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
     & other_filters
 )
 @authorized_users_only
@@ -143,7 +143,7 @@ async def resume(client, m: Message):
 
 
 @Client.on_message(
-    command(["mute", f"mute@{BOT_USERNAME}", "vmute","كتم"]) & other_filters
+    command(["mute", f"mute@{BOT_USERNAME}", "vmute"]) & other_filters
 )
 @authorized_users_only
 async def mute(client, m: Message):
@@ -294,3 +294,23 @@ async def change_volume(client, m: Message):
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
         await m.reply("❌ **nothing in streaming**")
+        
+        
+        
+@Client.on_message(
+    command(["max", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
+)
+@authorized_users_only
+async def pause(client, m: Message):
+    chat_id = m.chat.id
+    if chat_id in QUEUE:
+        try:
+            await call_py.pause_stream(chat_id)
+            await m.reply(
+                "شغل كفي كده كفي كده"
+            )
+        except Exception as e:
+            await m.reply(f"🚫 **error:**\n\n`{e}`")
+    else:
+        await m.reply("❌ **شغل كفي كده كده **")
+
