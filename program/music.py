@@ -57,18 +57,15 @@ async def play(c: Client, m: Message):
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
-                InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="cls"),
+                InlineKeyboardButton(text=" ♬ تـــحـــكـــم ♬", callback_data="cbmenu"),
+                InlineKeyboardButton(text="_♬ الــــمطــور ♬_", url=f"https://t.me/xO_mab_Ox"),
+            ]
+        ],[
+            [
+                InlineKeyboardButton(text=" ♬ ســـــمعنــــي ♬", callback_data="mabx"),
+                InlineKeyboardButton(text="_♬ خــروج ♬_", callback_data="cls"),
             ]
         ]
-        
-        [
-            [
-            
-               InlineKeyboardButton(text="ســـمــعــني", callback_data="mabx")
-               
-            ]    
-       ] 
     )
     if m.sender_chat:
         return await m.reply_text("ʏᴏᴜ'ʀᴇ ᴀɴ ᴀɴᴏɴʏᴍᴏᴜs ᴀᴅᴍɪɴ__ \n\n» ʀᴇᴠᴇʀᴛ ʙᴀᴄᴋ ᴛᴏ ᴜsᴇʀ ᴀᴄᴄᴏᴜɴᴛ ғʀᴏᴍ ᴀᴅᴍɪɴ ʀɪɢʜᴛs")

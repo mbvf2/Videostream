@@ -1,4 +1,4 @@
-#Copyright (C) 2021 By VeezMusicProject
+ Copyright (C) 2021 By VeezMusicProject
 
 from driver.queues import QUEUE
 from pyrogram import Client, filters
@@ -204,7 +204,7 @@ async def close(_, query: CallbackQuery):
 
 
 
-@Client.on_callback_query(filters.regex("mabx"))
+@Client.on_callback_query(filters.regex("cbmabx"))
 async def cbmenu(_, query: CallbackQuery):
     if query.message.sender_chat:
         return await query.answer("you're an Anonymous Admin !\n\n» revert back to user account from admin rights.")
@@ -217,8 +217,8 @@ async def cbmenu(_, query: CallbackQuery):
               f"انت الان داخل قائمة سمعني ♥\n\nاختر ما تريد سماعه من الازرار بي الاسفل ♥.. ",
               reply_markup=InlineKeyboardMarkup(
                   [[
-                      InlineKeyboardButton("مـــسـلم", callback_data="cbstop"),
-                      InlineKeyboardButton("ويـجـز", callback_data="cbpause"),
+                      InlineKeyboardButton("مـــسـلم", callback_data="max"),
+                      InlineKeyboardButton("ويـجـز", callback_data="cbmax"),
                       InlineKeyboardButton("عمار", callback_data="cbresume"),
                   ],[
                       InlineKeyboardButton("احمد كامل", callback_data="cbmute"),

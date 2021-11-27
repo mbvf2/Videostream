@@ -313,4 +313,24 @@ async def pause(client, m: Message):
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
         await m.reply("❌ **شغل كفي كده كده **")
+        
+        
+@Client.on_callback_query(filters.regex("cbmax"))
+async def cbresume(_, query: CallbackQuery):
+    if query.message.sender_chat:
+        return await query.answer("شغل ويجز كيفي كده.")
+    a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
+    if not a.can_manage_voice_chats:
+        return await query.answer("💡 بطل لعب ي ابو شخه بس 😂", show_alert=True)
+    chat_id = query.message.chat.id
+    if chat_id in QUEUE:
+        try:
+            await call_py.resume_stream(chat_id)
+            await query.edit_message_text(
+                "شغل كفي كده ويجز", reply_markup=bttn
+            )
+        except Exception as e:
+            await query.edit_message_text(f"🚫 **error:**\n\n`{e}`", reply_markup=bcl)
+    else:
+        await query.answer("شغل ويجز كفي كده", show_alert=True)
 
