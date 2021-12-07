@@ -38,7 +38,7 @@ async def update_admin(client, message):
     )
 
 
-@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip"]) & other_filters)
+@Client.on_message(command(["skip", f"skip@{BOT_USERNAME}", "vskip","/skip","تخطي"]) & other_filters)
 @authorized_users_only
 async def skip(client, m: Message):
 
@@ -46,10 +46,10 @@ async def skip(client, m: Message):
         [
             [
                 InlineKeyboardButton(
-                    text="• Mᴇɴᴜ", callback_data="cbmenu"
+                    text="• القائمه", callback_data="cbmenu"
                 ),
                 InlineKeyboardButton(
-                    text="• Cʟᴏsᴇ", callback_data="cls"
+                    text="• اغلاق", callback_data="cls"
                 ),
             ]
         ]
@@ -89,7 +89,7 @@ async def skip(client, m: Message):
 
 
 @Client.on_message(
-    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop"])
+    command(["stop", f"stop@{BOT_USERNAME}", "end", f"end@{BOT_USERNAME}", "vstop","/end","انهاء"])
     & other_filters
 )
 @authorized_users_only
@@ -107,7 +107,7 @@ async def stop(client, m: Message):
 
 
 @Client.on_message(
-    command(["pause", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
+    command(["pause", f"pause@{BOT_USERNAME}", "vpause","كتم"]) & other_filters
 )
 @authorized_users_only
 async def pause(client, m: Message):
@@ -294,43 +294,3 @@ async def change_volume(client, m: Message):
             await m.reply(f"🚫 **error:**\n\n`{e}`")
     else:
         await m.reply("❌ **nothing in streaming**")
-        
-        
-        
-@Client.on_message(
-    command(["max", f"pause@{BOT_USERNAME}", "vpause"]) & other_filters
-)
-@authorized_users_only
-async def pause(client, m: Message):
-    chat_id = m.chat.id
-    if chat_id in QUEUE:
-        try:
-            await call_py.pause_stream(chat_id)
-            await m.reply(
-                "شغل كفي كده كفي كده"
-            )
-        except Exception as e:
-            await m.reply(f"🚫 **error:**\n\n`{e}`")
-    else:
-        await m.reply("❌ **شغل كفي كده كده **")
-        
-        
-@Client.on_callback_query(filters.regex("cbmax"))
-async def cbresume(_, query: CallbackQuery):
-    if query.message.sender_chat:
-        return await query.answer("شغل ويجز كيفي كده.")
-    a = await _.get_chat_member(query.message.chat.id, query.from_user.id)
-    if not a.can_manage_voice_chats:
-        return await query.answer("💡 بطل لعب ي ابو شخه بس 😂", show_alert=True)
-    chat_id = query.message.chat.id
-    if chat_id in QUEUE:
-        try:
-            await call_py.resume_stream(chat_id)
-            await query.edit_message_text(
-                "شغل كفي كده ويجز", reply_markup=bttn
-            )
-        except Exception as e:
-            await query.edit_message_text(f"🚫 **error:**\n\n`{e}`", reply_markup=bcl)
-    else:
-        await query.answer("شغل ويجز كفي كده", show_alert=True)
-

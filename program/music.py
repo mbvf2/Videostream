@@ -50,15 +50,15 @@ async def ytdl(link):
         return 0, stderr.decode()
 
 
-@Client.on_message(command(["play", f"play@{BOT_USERNAME}","شغل"]) & other_filters)
+@Client.on_message(command(["play", f"play@{BOT_USERNAME}","/play","تشغيل","شغل","يتم تشغيل"]) & other_filters)
 async def play(c: Client, m: Message):
     replied = m.reply_to_message
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
-                InlineKeyboardButton(text="•سمعني", callback_data="cbmabx"),
+                InlineKeyboardButton(text="• القائمه", callback_data="cbmenu"),
+                InlineKeyboardButton(text="• اغلاق", callback_data="cls"),
             ]
         ]
     )
@@ -103,7 +103,7 @@ async def play(c: Client, m: Message):
 
     if replied:
         if replied.audio or replied.voice:
-            suhu = await replied.reply("📥 **downloading audio...**")
+            suhu = await replied.reply("📥 **جاري تنزيل الملف الصوتي ...**")
             dl = await replied.download()
             link = replied.link
             if replied.audio:
@@ -121,12 +121,12 @@ async def play(c: Client, m: Message):
                 await suhu.delete()
                 await m.reply_photo(
                     photo=f"{IMG_1}",
-                    caption=f"💡 **Track added to queue »** `{pos}`\n\n🏷 **Name:** [{songname}]({link})\n💭 **Chat:** `{chat_id}`\n🎧 **Request by:** {m.from_user.mention()}",
+                    caption=f"💡 **وقت الاغنيه »** `{pos}`\n\n🏷 **الاغنيه:** [{songname}]({link})\n💭 **المجموعه:** `{chat_id}`\n🎧 **تم الطلب من :** {m.from_user.mention()}",
                     reply_markup=keyboard,
                 )
             else:
              try:
-                await suhu.edit("🔄 **ᴊᴏɪɴɪɴɢ ᴠᴏɪᴄᴇ ᴄʜᴀᴛ...**")
+                await suhu.edit("🔄 **جاري دخول المحدثه الصوتيه..**")
                 await call_py.join_group_call(
                     chat_id,
                     AudioPiped(
@@ -139,7 +139,7 @@ async def play(c: Client, m: Message):
                 requester = f"[{m.from_user.first_name}](tg://user?id={m.from_user.id})"
                 await m.reply_photo(
                     photo=f"{IMG_2}",
-                    caption=f"💡 **ᴍᴜsɪᴄ sᴛʀᴇᴀᴍɪɴɢ sᴛᴀʀᴛᴇᴅ**\n\n🏷 **ɴᴀᴍᴇ:** [{songname}]({link})\n💭 **ᴄʜᴀᴛ:** `{chat_id}`\n💡 **sᴛᴀᴛᴜs:** `Playing`\n🎧 **ʀᴇǫᴜᴇsᴛ ʙʏ:** {requester}",
+                    caption=f"💡 ** وقت الاغنيه **\n\n🏷 **اسم الاغنيه:** [{songname}]({link})\n💭 **المجموعه:** `{chat_id}`\n💡 **الوقت:** `Playing`\n🎧 **تم الطلب:** {requester}",
                     reply_markup=keyboard,
                 )
              except Exception as e:
@@ -148,14 +148,14 @@ async def play(c: Client, m: Message):
         else:
             if len(m.command) < 2:
                 await m.reply(
-                    "» reply to an **audio file** or **give something to search.**"
+                    "» ** يرجي الرد ع ملف صوتي او اعطائي كلمه ابحث عنها**"
                 )
             else:
-                suhu = await c.send_message(chat_id, "🔎 **sᴇᴀʀᴄʜɪɴɢ...**")
+                suhu = await c.send_message(chat_id, "🔎 **حاري البحث...**")
                 query = m.text.split(None, 1)[1]
                 search = ytsearch(query)
                 if search == 0:
-                    await suhu.edit("❌ **ɴᴏ ʀᴇsᴜʟᴛs ғᴏᴜɴᴅ**")
+                    await suhu.edit("❌ **لا توجد نتائج**")
                 else:
                     songname = search[0]
                     url = search[1]
@@ -251,14 +251,14 @@ async def play(c: Client, m: Message):
 # stream is used for live streaming only
 
 
-@Client.on_message(command(["stream", f"stream@{BOT_USERNAME}"]) & other_filters)
+@Client.on_message(command(["stream", f"stream@{BOT_USERNAME}","شاهد"]) & other_filters)
 async def stream(c: Client, m: Message):
     chat_id = m.chat.id
     keyboard = InlineKeyboardMarkup(
         [
             [
-                InlineKeyboardButton(text="• Mᴇɴᴜ", callback_data="cbmenu"),
-                InlineKeyboardButton(text="• Cʟᴏsᴇ", callback_data="cls"),
+                InlineKeyboardButton(text="• القائمه", callback_data="cbmenu"),
+                InlineKeyboardButton(text="• اغلاق", callback_data="cls"),
             ]
         ]
     )
@@ -305,7 +305,7 @@ async def stream(c: Client, m: Message):
         await m.reply("» give me a live-link/m3u8 url/youtube link to stream.")
     else:
         link = m.text.split(None, 1)[1]
-        suhu = await c.send_message(chat_id, "🔄 **ᴘʀᴏᴄᴇssɪɴɢ sᴛʀᴇᴀᴍ...**")
+        suhu = await c.send_message(chat_id, "🔄 **جاري عرض الفيديو ...**")
 
         regex = r"^(https?\:\/\/)?(www\.youtube\.com|youtu\.?be)\/.+"
         match = re.match(regex, link)
